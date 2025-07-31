@@ -21,10 +21,23 @@ namespace ClinicaOptica.Domain.ClasesOptica
         public int OptometristaId { get; set; }
 
         /// <summary>
-        /// Fecha y hora de la cita.
+        /// Fecha de la cita.
         /// </summary>
         [Required]
-        public DateTime FechaHora { get; set; }
+        public DateTime Fecha { get; set; }
+
+        /// <summary>
+        /// Hora de la cita.
+        /// </summary>
+        [Required]
+        public TimeSpan Hora { get; set; }
+
+        /// <summary>
+        /// Duración de la cita en minutos.
+        /// </summary>
+        [Required]
+        [Range(15, 180)]
+        public int Duracion { get; set; } = 30;
 
         /// <summary>
         /// Tipo de cita.
@@ -39,6 +52,12 @@ namespace ClinicaOptica.Domain.ClasesOptica
         [Required]
         [StringLength(30)]
         public string Estado { get; set; } = "Programada";
+
+        /// <summary>
+        /// Observaciones adicionales de la cita.
+        /// </summary>
+        [StringLength(500)]
+        public string? Observaciones { get; set; }
 
         // Propiedades de navegación
         public virtual Paciente? Paciente { get; set; }

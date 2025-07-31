@@ -31,6 +31,13 @@ namespace ClinicaOptica.Infrastructure
         public DbSet<Cita> Citas { get; set; }
         public DbSet<Notificacion> Notificaciones { get; set; }
         public DbSet<LogActividad> LogsActividad { get; set; }
+        
+        // Secciones de la hoja clínica
+        public DbSet<Antecedentes> Antecedentes { get; set; }
+        public DbSet<AgudezaVisual> AgudezaVisual { get; set; }
+        public DbSet<Lensometria> Lensometria { get; set; }
+        public DbSet<Refraccion> Refraccion { get; set; }
+        public DbSet<RecetaFinal> RecetaFinal { get; set; }
 
         /// <summary>
         /// Configura el modelo de datos y las relaciones entre entidades.
@@ -86,6 +93,13 @@ namespace ClinicaOptica.Infrastructure
             modelBuilder.Entity<Cita>().ToTable("Citas");
             modelBuilder.Entity<Notificacion>().ToTable("Notificaciones");
             modelBuilder.Entity<LogActividad>().ToTable("LogsActividad");
+            
+            // Configurar tablas de secciones clínicas
+            modelBuilder.Entity<Antecedentes>().ToTable("Antecedentes");
+            modelBuilder.Entity<AgudezaVisual>().ToTable("AgudezaVisual");
+            modelBuilder.Entity<Lensometria>().ToTable("Lensometria");
+            modelBuilder.Entity<Refraccion>().ToTable("Refraccion");
+            modelBuilder.Entity<RecetaFinal>().ToTable("RecetaFinal");
         }
     }
 }

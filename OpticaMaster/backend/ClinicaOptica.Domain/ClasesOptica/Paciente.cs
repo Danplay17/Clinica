@@ -30,6 +30,34 @@ namespace ClinicaOptica.Domain.ClasesOptica
         public int Edad { get; set; }
 
         /// <summary>
+        /// Estado civil del paciente.
+        /// </summary>
+        [Required(ErrorMessage = "El estado civil es obligatorio")]
+        [StringLength(20)]
+        public string EstadoCivil { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Escolaridad del paciente.
+        /// </summary>
+        [Required(ErrorMessage = "La escolaridad es obligatoria")]
+        [StringLength(50)]
+        public string Escolaridad { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Ocupación del paciente.
+        /// </summary>
+        [Required(ErrorMessage = "La ocupación es obligatoria")]
+        [StringLength(100)]
+        public string Ocupacion { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Domicilio del paciente.
+        /// </summary>
+        [Required(ErrorMessage = "El domicilio es obligatorio")]
+        [StringLength(200)]
+        public string Domicilio { get; set; } = string.Empty;
+
+        /// <summary>
         /// Correo electrónico del paciente.
         /// </summary>
         [EmailAddress]
@@ -43,6 +71,11 @@ namespace ClinicaOptica.Domain.ClasesOptica
         [StringLength(15)]
         public string Telefono { get; set; } = string.Empty;
 
+        /// <summary>
+        /// Identificador del tutor (opcional, para menores de edad).
+        /// </summary>
+        public int? TutorId { get; set; }
+
         // Propiedades de navegación
 
         /// <summary>
@@ -54,5 +87,15 @@ namespace ClinicaOptica.Domain.ClasesOptica
         /// Lista de ventas realizadas a este paciente.
         /// </summary>
         public virtual ICollection<Venta> Ventas { get; set; } = new List<Venta>();
+
+        /// <summary>
+        /// Lista de citas programadas para este paciente.
+        /// </summary>
+        public virtual ICollection<Cita> Citas { get; set; } = new List<Cita>();
+
+        /// <summary>
+        /// Tutor asociado (opcional, para menores de edad).
+        /// </summary>
+        public virtual Tutor? Tutor { get; set; }
     }
 }

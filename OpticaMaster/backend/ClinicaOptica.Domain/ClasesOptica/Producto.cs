@@ -46,5 +46,12 @@ namespace ClinicaOptica.Domain.ClasesOptica
         /// Indica si el producto está activo.
         /// </summary>
         public bool Activo { get; set; } = true;
+
+        // Propiedades de navegación
+
+        /// <summary>
+        /// Lista de ventas de este producto.
+        /// </summary>
+        public virtual ICollection<Venta> Ventas { get; set; } = new List<Venta>();
     }
 }

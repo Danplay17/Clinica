@@ -21,6 +21,26 @@ namespace ClinicaOptica.Domain.ClasesOptica
         public DateTime Fecha { get; set; }
 
         /// <summary>
+        /// Identificador del producto vendido.
+        /// </summary>
+        [Required]
+        public int ProductoId { get; set; }
+
+        /// <summary>
+        /// Cantidad vendida.
+        /// </summary>
+        [Required]
+        [Range(1, int.MaxValue)]
+        public int Cantidad { get; set; }
+
+        /// <summary>
+        /// Precio unitario al momento de la venta.
+        /// </summary>
+        [Required]
+        [Range(0.01, double.MaxValue)]
+        public decimal PrecioUnitario { get; set; }
+
+        /// <summary>
         /// Total de la venta.
         /// </summary>
         [Required]
@@ -29,5 +49,6 @@ namespace ClinicaOptica.Domain.ClasesOptica
 
         // Propiedades de navegación
         public virtual Paciente? Paciente { get; set; }
+        public virtual Producto? Producto { get; set; }
     }
 }
